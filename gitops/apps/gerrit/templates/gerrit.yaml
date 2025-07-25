@@ -95,10 +95,10 @@ spec:
             [gerrit]
               canonicalWebUrl = https://{{ .Values.config.domain }}/gerrit/
             [core]
-              packedGitLimit = 1g
-              packedGitWindowSize = 8k
-              packedGitOpenFiles = 1024
-              streamFileThreshold = 1g
+              packedGitLimit = 2g
+              packedGitWindowSize = 16k
+              packedGitOpenFiles = 2048
+              streamFileThreshold = 2g
             [index]
               type = LUCENE
             [auth]
@@ -115,7 +115,7 @@ spec:
               email = gerrit@example.com
               anonymousCoward = Unnamed User
             [container]
-              heapLimit = 4g
+              heapLimit = 6g
             [plugin "gerrit-oauth-provider-keycloak-oauth"]
               root-url = https://{{ .Values.config.domain }}
               realm = "horizon"
