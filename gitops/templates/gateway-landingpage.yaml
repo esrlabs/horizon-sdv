@@ -63,6 +63,7 @@ spec:
                   style-src 'self' 'unsafe-inline' https://unpkg.com;
                   upgrade-insecure-requests;
                   block-all-mixed-content;
+            remove: ["Server"]
       backendRefs:
         - name: {{ .Values.config.namespacePrefix }}landingpage
           port: 80
