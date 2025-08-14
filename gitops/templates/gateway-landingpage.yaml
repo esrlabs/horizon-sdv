@@ -55,16 +55,7 @@ spec:
               - name: Strict-Transport-Security
                 value: max-age=31536000; includeSubDomains; preload
               - name: Content-Security-Policy
-                value: >
-                  default-src 'self' 'unsafe-eval' 'unsafe-inline' *.accenture.com *.esrlabs.com;
-                  script-src 'self' 'unsafe-inline' 'unsafe-eval' https://*.cloudfront.net;
-                  font-src 'self' data:;
-                  script-src-elem 'self' 'unsafe-inline' 'unsafe-eval' https://*.google-analytics.com https://*.cloudfront.net https://www.googletagmanager.com;
-                  img-src 'self' *.accenture.com *.esrlabs.com data:;
-                  connect-src 'self' *.accenture.com *.esrlabs.com https://*.google-analytics.com;
-                  style-src 'self' 'unsafe-inline' https://unpkg.com;
-                  upgrade-insecure-requests;
-                  block-all-mixed-content;
+                value: default-src 'self' 'unsafe-eval' 'unsafe-inline' *.accenture.com *.esrlabs.com; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://*.cloudfront.net; font-src 'self' data:; script-src-elem 'self' 'unsafe-inline' 'unsafe-eval' https://*.google-analytics.com https://*.cloudfront.net https://www.googletagmanager.com; img-src 'self' *.accenture.com *.esrlabs.com data:; connect-src 'self' *.accenture.com *.esrlabs.com https://*.google-analytics.com; style-src 'self' 'unsafe-inline' https://unpkg.com; upgrade-insecure-requests; block-all-mixed-content;"
             remove: ["server"]
       backendRefs:
         - name: {{ .Values.config.namespacePrefix }}landingpage
