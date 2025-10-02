@@ -37,7 +37,7 @@ spec:
           postgresql:
             image:
               repository: bitnamilegacy/postgresql
-              tag: ":17.0.0-debian-12-r"
+              tag: "17.0.0-debian-12-r3"
             auth:
               username: dbusername
               database: keycloak
