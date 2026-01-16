@@ -17,6 +17,7 @@ resource "docker_image" "sdv-container-images" {
 
   name = "${var.gcp_region}-docker.pkg.dev/${var.gcp_project_id}/${var.gcp_registry_id}/${each.key}:${each.value.version}"
   build {
+    platform = "linux/amd64"
     no_cache = true
 
     context = "${path.module}/images/${each.value.directory}/${each.key}"
