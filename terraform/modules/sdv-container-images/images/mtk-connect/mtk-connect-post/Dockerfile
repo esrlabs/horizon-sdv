@@ -17,7 +17,7 @@ ADD configure.sh /root
 ADD secret-jenkins.json /root
 ADD secret-mtk-connect.json /root
 # Add security repository and upgrade all packages to fix CVEs
-RUN echo "deb http://security.debian.org/debian-security bookworm-security main" > /etc/apt/sources.list.d/security.list && \
+RUN echo "deb http://security.debian.org/debian-security bookworm-security main contrib non-free" > /etc/apt/sources.list.d/security.list && \
     apt update -y && apt upgrade -y && \
     apt install vim curl skopeo jq -y && \
     apt clean && rm -rf /var/lib/apt/lists/*

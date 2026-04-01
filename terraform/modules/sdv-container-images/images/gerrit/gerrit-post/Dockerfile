@@ -20,7 +20,7 @@ COPY account.config /root
 COPY externalId-keycloak-oauth-gerrit-admin /root
 COPY externalId-username-gerrit-admin /root
 # Add security repository and upgrade all packages to fix CVEs
-RUN echo "deb http://security.debian.org/debian-security bookworm-security main" > /etc/apt/sources.list.d/security.list && \
+RUN echo "deb http://security.debian.org/debian-security bookworm-security main contrib non-free" > /etc/apt/sources.list.d/security.list && \
     apt update -y && apt upgrade -y && \
     apt clean && rm -rf /var/lib/apt/lists/*
 RUN apt update -y && DEBIAN_FRONTEND=noninteractive TZ=Etc/UTC apt -y install tzdata

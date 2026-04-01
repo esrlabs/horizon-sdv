@@ -15,7 +15,7 @@
 FROM --platform=linux/amd64 python:3.9-slim-bookworm
 
 # Add security repository and upgrade all packages to fix CVEs
-RUN echo "deb http://security.debian.org/debian-security bookworm-security main" > /etc/apt/sources.list.d/security.list && \
+RUN echo "deb http://security.debian.org/debian-security bookworm-security main contrib non-free" > /etc/apt/sources.list.d/security.list && \
     apt update -y && apt upgrade -y && \
     apt clean && rm -rf /var/lib/apt/lists/*
 
