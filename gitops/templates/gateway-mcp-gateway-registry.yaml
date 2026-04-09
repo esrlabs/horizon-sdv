@@ -35,6 +35,23 @@ spec:
         - path:
             type: PathPrefix
             value: /
+      filters:
+        - type: ResponseHeaderModifier
+          responseHeaderModifier:
+            add:
+              - name: X-Frame-Options
+                value: SAMEORIGIN
+              - name: Cache-Control
+                value: public, max-age=14400
+              - name: X-XSS-Protection
+                value: "1; mode=block"
+              - name: X-Content-Type-Options
+                value: nosniff
+              - name: Strict-Transport-Security
+                value: max-age=31536000; includeSubDomains; preload
+              - name: Content-Security-Policy
+                value: default-src 'self' 'unsafe-eval' 'unsafe-inline' *.accenture.com *.esrlabs.com; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://*.cloudfront.net; font-src 'self' https://unpkg.com data:; script-src-elem 'self' 'unsafe-inline' 'unsafe-eval' https://*.google-analytics.com https://*.cloudfront.net https://www.googletagmanager.com; img-src 'self' *.accenture.com *.esrlabs.com data:; connect-src 'self' *.accenture.com *.esrlabs.com https://*.google-analytics.com; style-src 'self' 'unsafe-inline' https://unpkg.com; upgrade-insecure-requests; block-all-mixed-content;"
+            remove: ["server"]
       backendRefs:
         - name: registry
           namespace: {{ .Values.config.namespacePrefix }}mcp-gateway-registry
@@ -51,6 +68,22 @@ spec:
             path:
               type: ReplacePrefixMatch
               replacePrefixMatch: /
+        - type: ResponseHeaderModifier
+          responseHeaderModifier:
+            add:
+              - name: X-Frame-Options
+                value: SAMEORIGIN
+              - name: Cache-Control
+                value: public, max-age=14400
+              - name: X-XSS-Protection
+                value: "1; mode=block"
+              - name: X-Content-Type-Options
+                value: nosniff
+              - name: Strict-Transport-Security
+                value: max-age=31536000; includeSubDomains; preload
+              - name: Content-Security-Policy
+                value: default-src 'self' 'unsafe-eval' 'unsafe-inline' *.accenture.com *.esrlabs.com; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://*.cloudfront.net; font-src 'self' https://unpkg.com data:; script-src-elem 'self' 'unsafe-inline' 'unsafe-eval' https://*.google-analytics.com https://*.cloudfront.net https://www.googletagmanager.com; img-src 'self' *.accenture.com *.esrlabs.com data:; connect-src 'self' *.accenture.com *.esrlabs.com https://*.google-analytics.com; style-src 'self' 'unsafe-inline' https://unpkg.com; upgrade-insecure-requests; block-all-mixed-content;"
+            remove: ["server"]
       backendRefs:
         - name: auth-server
           namespace: {{ .Values.config.namespacePrefix }}mcp-gateway-registry
